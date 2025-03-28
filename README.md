@@ -24,6 +24,7 @@ UPDATE FINISH:
 ![img2](img/final.png)
 
 # AUTO CHECK
+by default config auto-generated in ~/.config/upd/upd.ini
 configure auto check:
 ```
 [Settings]
