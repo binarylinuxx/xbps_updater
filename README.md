@@ -22,3 +22,19 @@ UPDATE PROCCES:
 
 UPDATE FINISH:
 ![img2](img/final.png)
+
+# AUTO CHECK
+configure auto check:
+```
+[Settings]
+check_every = day|week|month
+check_through = 1 weeks|months|days
+last_check = 2025-03-28 22:38:50 #last check time
+notify_threshold = 50 #going base warning based on value you set
+critical_threshold = 200 #going important warning based on value 
+auto_check = True # True disable auto check
+
+[check]
+check-every = day|week|month
+check_through = 1 2 3 #how much times through one day week do auto check
+```

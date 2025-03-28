@@ -1,0 +1,133 @@
+#!/usr/bin/env python3
+import os
+import sys
+import subprocess
+import configparser
+import time
+from datetime import datetime, timedelta
+from pathlib import Path
+
+CONFIG_DIR = os.path.expanduser("~/.config/upd")
+CONFIG_FILE = os.path.join(CONFIG_DIR, "upd.ini")
+
+def load_config():
+    config = configparser.ConfigParser()
+    defaults = {
+        'check_every': 'week',
+        'check_through': '1',
+        'last_check': '',
+        'notify_threshold': '150',
+        'critical_threshold': '200',
+        'auto_check': 'true'
+    }
+    config['Settings'] = defaults
+    
+    if os.path.exists(CONFIG_FILE):
+        config.read(CONFIG_FILE)
+    
+    with open(CONFIG_FILE, 'w') as f:
+        config.write(f)
+    
+    return config
+
+def get_last_check_date(config):
+    last_check = config.get("Settings", "last_check", fallback="")
+    try:
+        return datetime.strptime(last_check, "%Y-%m-%d %H:%M:%S") if last_check else None
+    except ValueError:
+        return None
+
+def should_auto_check(config, last_check_date):
+    if not config.getboolean("Settings", "auto_check", fallback=True):
+        return False
+        
+    check_every = config.get("Settings", "check_every", fallback="week")
+    check_through = config.getint("Settings", "check_through", fallback=1)
+    
+    if not last_check_date:
+        return True
+        
+    now = datetime.now()
+    delta = now - last_check_date
+    
+    if check_every == "day":
+        return delta.days >= check_through
+    elif check_every == "week":
+        return delta.days >= (7 * check_through)
+    elif check_every == "month":
+        return delta.days >= (30 * check_through)
+    return True
+
+def send_notification(title, message, urgency="normal"):
+    try:
+        urgency_flag = "-u critical" if urgency == "critical" else ""
+        subprocess.run([
+            "notify-send",
+            urgency_flag,
+            "-i", "software-update-available",
+            title,
+            message
+        ], check=True)
+    except subprocess.CalledProcessError as e:
+        print(f"Notification error: {e}")
+
+def check_updates(config):
+    try:
+        output = subprocess.check_output(["xbps-install", "-un"], text=True)
+        packages = []
+        
+        if output.strip():
+            for line in output.splitlines():
+                parts = line.split()
+                if len(parts) >= 3:
+                    packages.append((parts[0], parts[1], parts[2]))
+        
+        # Update last check time
+        now = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+        config.set("Settings", "last_check", now)
+        with open(CONFIG_FILE, 'w') as f:
+            config.write(f)
+        
+        # Check thresholds
+        warn_thresh = config.getint("Settings", "notify_threshold", fallback=150)
+        crit_thresh = config.getint("Settings", "critical_threshold", fallback=200)
+        
+        if packages:
+            if len(packages) > warn_thresh:
+                send_notification(
+                    "XBPS Package Updates",
+                    f"{len(packages)} packages need updating!",
+                    "critical" if len(packages) > crit_thresh else "normal"
+                )
+            return len(packages)
+        
+    except subprocess.CalledProcessError as e:
+        send_notification(
+            "XBPS Update Check Failed",
+            f"Error checking updates: {e}",
+            "critical"
+        )
+    return 0
+
+def background_service():
+    config = load_config()
+    last_check_date = get_last_check_date(config)
+    
+    while True:
+        if should_auto_check(config, last_check_date):
+            check_updates(config)
+            last_check_date = get_last_check_date(config)
+        
+        # Sleep for 1 hour between checks
+        time.sleep(3600)
+
+if __name__ == "__main__":
+    if len(sys.argv) > 1 and sys.argv[1] == "--background":
+        background_service()
+    else:
+        # GUI mode - import and run your GUI code
+        from xbps_updater_gui import XBPSUpdaterApp
+        app = XBPSUpdaterApp()
+        app.connect("destroy", Gtk.main_quit)
+        app.show_all()
+        Gtk.main()
