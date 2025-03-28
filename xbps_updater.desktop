@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Name=System Update
+GenericName=Update System Packages
+Comment=XBPS packages updater with GTK interface
+Exec=python /usr/local/bin/xbps_updater.py
+Icon=/usr/share/icons/upd.svg
+Terminal=false
+Categories=System;Utility;
+Keywords=update;package;xbps;system;
+StartupNotify=true
