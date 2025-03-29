@@ -1,8 +1,8 @@
 # XBPS UPDATER
 Simple GTK UI for update system with XBPS **PACKAGE MANAGER** 
 
-> on Arch Linux Might no work!
-> because lack of my experience with XBPS only!
+> the utility currenly only alpha 
+> dont expect to no bugs to be found
 
 # INSTALL
 to install:
