@@ -26,11 +26,13 @@ sudo ./install.sh
 
 [CONFIG(MORE VERBOSED)](https://github.com/binarylinuxx/xbps_updater#auto-check)
 
+[TO-DO](https://github.com/binarylinuxx/xbps_updater#in-feature)
+
 # SCREENS
-**UPDATE PROCCES:**
+**HOME PAGE:**
 ![img1](img/update.png)
 
-**UPDATE FINISH:**
+**UPDATE PROCCES:**
 ![img2](img/final.png)
 
 **ABOUT PAGE**
