@@ -17,14 +17,18 @@ sudo ./install.sh
 > might be possible many bugs
 
 # SCREENS
-UPDATE PROCCES:
+**UPDATE PROCCES:**
 ![img1](img/update.png)
 
-UPDATE FINISH:
+**UPDATE FINISH:**
 ![img2](img/final.png)
+
+**CONFIGURATION:
+![img3](img/config_page.png)
 
 # AUTO CHECK
 by default config auto-generated in ~/.config/upd/upd.ini
+
 configure auto check:
 ```
 [Settings]
