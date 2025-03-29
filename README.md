@@ -1,4 +1,7 @@
 # XBPS UPDATER
+
+![img0](upd.svg)
+
 Simple GTK UI for update system with XBPS **PACKAGE MANAGER** full python
 im pretty lazy for even one command so... My gtk xbps update manager!
 

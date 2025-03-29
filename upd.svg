@@ -2,14 +2,15 @@
 <!-- Created with Inkscape (http://www.inkscape.org/) -->
 
 <svg
-   width="91.809998"
-   height="91.809998"
-   viewBox="0 0 91.809998 91.809998"
+   width="87.668045"
+   height="87.668045"
+   viewBox="0 0 87.668045 87.668045"
    version="1.1"
    id="svg1"
    inkscape:export-filename="upd.svg"
    inkscape:export-xdpi="96"
    inkscape:export-ydpi="96"
+   sodipodi:docname="upd.svg"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns="http://www.w3.org/2000/svg"
@@ -28,9 +29,9 @@
     <inkscape:page
        x="0"
        y="0"
-       width="91.809998"
-       height="91.809998"
-       id="page2"
+       width="87.668045"
+       height="87.668045"
+       id="page1"
        margin="0"
        bleed="0" />
   </sodipodi:namedview>
@@ -42,19 +43,33 @@
        width="102.61682"
        height="113.27103"
        id="rect1" />
+    <rect
+       x="13.037383"
+       y="9.5327101"
+       width="102.61682"
+       height="113.27103"
+       id="rect2" />
   </defs>
   <g
      inkscape:label="Layer 1"
      inkscape:groupmode="layer"
      id="layer1"
-     transform="translate(-15.5,-16)">
+     transform="translate(-17.141963,-17.641962)">
     <text
        xml:space="preserve"
        id="text1"
-       style="font-weight:500;font-size:93.3333px;font-family:'GohuFont 11 Nerd Font Mono';-inkscape-font-specification:'GohuFont 11 Nerd Font Mono Medium';text-align:start;writing-mode:lr-tb;direction:ltr;white-space:pre;shape-inside:url(#rect1);fill:#ff5b5b;fill-opacity:1;stroke-width:1.8"
-       transform="matrix(1.8035582,0,0,1.8035582,-8.0131855,-52.656841)"><tspan
+       style="font-weight:500;font-size:93.3333px;font-family:'GohuFont 11 Nerd Font Mono';-inkscape-font-specification:'GohuFont 11 Nerd Font Mono Medium';text-align:start;writing-mode:lr-tb;direction:ltr;white-space:pre;shape-inside:url(#rect1);fill:#630000;fill-opacity:1;stroke-width:1.8"
+       transform="matrix(1.7053359,0,0,1.7053359,-4.2326506,-46.417769)"><tspan
          x="13.037109"
          y="91.478876"
-         id="tspan2"></tspan></text>
+         id="tspan3"></tspan></text>
+    <text
+       xml:space="preserve"
+       id="text2"
+       style="font-weight:500;font-size:93.3333px;font-family:'GohuFont 11 Nerd Font Mono';-inkscape-font-specification:'GohuFont 11 Nerd Font Mono Medium';text-align:start;writing-mode:lr-tb;direction:ltr;white-space:pre;shape-inside:url(#rect2);fill:#d40000;fill-opacity:1;stroke-width:1.8"
+       transform="matrix(1.7053359,0,0,1.7053359,-5.0906879,-47.275807)"><tspan
+         x="13.037109"
+         y="91.478876"
+         id="tspan4"></tspan></text>
   </g>
 </svg>
