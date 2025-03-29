@@ -12,6 +12,7 @@ ICON_DIR="${DESTDIR}${PREFIX}/share/icons"
 DESKTOP_DIR="${DESTDIR}${PREFIX}/share/applications"
 SERVICE_DIR="${DESTDIR}/etc/sv/xbps-updater"
 SERVICE_TO_INSTALL="polkit polkit-devel"
+PKGS="python3 python3-gobject"
 
 # Files
 SCRIPT_FILE="xbps_updater.py"
@@ -51,7 +52,7 @@ install_files() {
     echo '#!/bin/sh' > "${SERVICE_DIR}/log/run"
     echo 'exec svlogd -tt ./main' >> "${SERVICE_DIR}/log/run"
     chmod +x "${SERVICE_DIR}/log/run"
-    sudo xbps-install -S $SERVICE_TO_INSTALL
+    sudo xbps-install -S $SERVICE_TO_INSTALL $PKGS
     sudo ln -s /etc/sv/polkitd /var/service
     sudo sv up polkitd
     
