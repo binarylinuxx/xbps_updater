@@ -16,6 +16,15 @@ sudo ./install.sh
 > you can use unstable branch but im not recommend
 > might be possible many bugs
 
+# LINKS
+[INSTALL](https://github.com/binarylinuxx/xbps_updater#install)
+
+[SCREENSHOTS](https://github.com/binarylinuxx/xbps_updater#screens)
+
+[CONFIG](https://github.com/binarylinuxx/xbps_updater#configuration)
+
+[CONFIG(MORE VERBOSED)](https://github.com/binarylinuxx/xbps_updater#auto-check)
+
 # SCREENS
 **UPDATE PROCCES:**
 ![img1](img/update.png)
@@ -23,7 +32,7 @@ sudo ./install.sh
 **UPDATE FINISH:**
 ![img2](img/final.png)
 
-**CONFIGURATION:
+# **CONFIGURATION:**
 ![img3](img/config_page.png)
 
 # AUTO CHECK
