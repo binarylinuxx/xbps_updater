@@ -33,6 +33,9 @@ sudo ./install.sh
 **UPDATE FINISH:**
 ![img2](img/final.png)
 
+**ABOUT PAGE**
+![img4](img/about_page.png)
+
 # **CONFIGURATION:**
 ![img3](img/config_page.png)
 
