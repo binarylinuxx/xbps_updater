@@ -1,5 +1,6 @@
 # XBPS UPDATER
-Simple GTK UI for update system with XBPS **PACKAGE MANAGER** 
+Simple GTK UI for update system with XBPS **PACKAGE MANAGER** full python
+im pretty lazy for even one command so... My gtk xbps update manager!
 
 > the utility currenly only alpha 
 > dont expect to no bugs to be found
@@ -52,3 +53,10 @@ auto_check = True # True disable auto check
 check-every = day|week|month
 check_through = 1 2 3 #how much times through one day week do auto check
 ```
+
+# IN FEATURE
+-- create xbps binary package []
+
+-- submit the package to void repos []
+
+-- full rewriten UI []
