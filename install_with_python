@@ -1,0 +1,61 @@
+#!/usr/bin/env bash
+
+# Set installation directories
+PREFIX="${PREFIX:-/usr/local}"
+DESTDIR="${DESTDIR:-}"
+INSTALL_DIR="${DESTDIR}${PREFIX}/bin"
+ICON_DIR="${DESTDIR}${PREFIX}/share/icons"
+DESKTOP_DIR="${DESTDIR}${PREFIX}/share/applications"
+
+APP_NAME="XBPS Updater"
+VERSION="1.0"
+
+# Dependencies to install
+PKGS="python3 python3-gobject"
+
+# Ensure Python and pip are installed
+check_requirements() {
+    command -v python3 >/dev/null || { echo "Error: python3 is not installed."; exit 1; }
+    command -v pip3 >/dev/null || { echo "Error: pip3 is not installed."; exit 1; }
+}
+
+install_python_package() {
+    # Install Python dependencies
+    echo "Installing Python dependencies using setup.py..."
+    python3 setup.py install --prefix="${PREFIX}"
+}
+
+install_files() {
+    # Install additional files like icons and desktop entry
+    echo "Installing additional files..."
+    install -m644 "upd.svg" "${ICON_DIR}/"
+    install -m644 "xbps_updater.desktop" "${DESKTOP_DIR}/"
+}
+
+create_service() {
+    # Install the service script
+    echo "Installing service..."
+    install -m755 "run" "${DESTDIR}/etc/sv/xbps-updater/run"
+    mkdir -p "${DESTDIR}/etc/sv/xbps-updater/log"
+    echo '#!/bin/sh' > "${DESTDIR}/etc/sv/xbps-updater/log/run"
+    echo 'exec svlogd -tt ./main' >> "${DESTDIR}/etc/sv/xbps-updater/log/run"
+    chmod +x "${DESTDIR}/etc/sv/xbps-updater/log/run"
+}
+
+install_dependencies() {
+    # Install system dependencies using xbps
+    sudo xbps-install -S $PKGS
+}
+
+main() {
+    check_requirements
+    install_python_package
+    install_files
+    create_service
+    install_dependencies
+
+    echo "Installation completed!"
+    echo "You can now run: ${PREFIX}/bin/xbps_updater"
+}
+
+main "$@"
