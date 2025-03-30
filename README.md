@@ -1,5 +1,5 @@
 # IMPORTANT
-im stuck in some very hard error and the project freezed until im found solution
+im stuck in some very hard error and the project freezed until im found solution.
 
 # XBPS UPDATER
 
