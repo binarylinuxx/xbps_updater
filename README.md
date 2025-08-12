@@ -1,6 +1,3 @@
-# IMPORTANT
-im stuck in some very hard error and the project freezed until im found solution.
-
 # XBPS UPDATER
 
 ![img0](anim.gif)
@@ -48,21 +45,19 @@ sudo ./install.sh
 ![img3](img/config_page.png)
 
 # AUTO CHECK
-by default config auto-generated in ~/.config/upd/upd.ini
+by default config auto-generated in ~/.config/xbps-updater/config.ini
 
 configure auto check:
 ```
 [Settings]
-check_every = day|week|month
-check_through = 1 weeks|months|days
-last_check = 2025-03-28 22:38:50 #last check time
-notify_threshold = 50 #going base warning based on value you set
-critical_threshold = 200 #going important warning based on value 
-auto_check = True # True disable auto check
-
-[check]
-check-every = day|week|month
-check_through = 1 2 3 #how much times through one day week do auto check
+check_every = week|month|day
+check_through = 2
+notify_threshold = 150
+critical_threshold = 200
+auto_check = True
+confirm_updates = True
+use_sudo = False
+last_check = 2025-08-06 14:02:52
 ```
 
 # IN FEATURE
